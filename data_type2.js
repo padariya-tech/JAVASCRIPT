@@ -11,4 +11,13 @@ let valueinscore = Number(score);
 
 let isloggedin = ""
 let booleanisloggedin = Boolean(isloggedin)
-console.log(booleanisloggedin);
+// console.log(booleanisloggedin);
+
+// 0=false , 1 = true
+// ""=false , "nij"=true
+
+let somenumer = 234
+let stringnumber = String(somenumer);
+
+console.log(stringnumber);
+console.log(typeof stringnumber);
