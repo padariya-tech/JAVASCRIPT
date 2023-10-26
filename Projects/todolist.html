@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        #container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .task {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .task input[type="radio"] {
+            margin-right: 10px;
+        }
+        .task p {
+            flex: 1;
+            margin: 0;
+        }
+        .task .delete {
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>To-Do List</h2>
+        <div id="div1">
+            <input type="text" id="txt" placeholder="Add your task">
+            <button id="btn" onclick="addTask()">Add Task</button>
+        </div>
+        <div id="taskList"></div>
+    </div>
+
+    <script>
+        function addTask() {
+            const text = document.getElementById("txt").value;
+
+            if (text.trim() !== "") {
+                const taskList = document.getElementById("taskList");
+                const taskContainer = document.createElement("div");
+                taskContainer.className = "task";
+
+                const radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "tasks";
+                radio.onclick = function() {
+                    textPara.style.textDecoration = "line-through";
+                };
+
+                const textPara = document.createElement("p");
+                textPara.textContent = text;
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.className = "delete";
+                deleteButton.onclick = function() {
+                    taskList.removeChild(taskContainer);
+                };
+
+                taskContainer.appendChild(radio);
+                taskContainer.appendChild(textPara);
+                taskContainer.appendChild(deleteButton);
+                taskList.appendChild(taskContainer);
+
+                document.getElementById("txt").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
+    

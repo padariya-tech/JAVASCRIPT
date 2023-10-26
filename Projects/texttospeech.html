@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            margin: 20px auto;
+            font-size: 16px;
+        }
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 50%;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Speech Converter</h1>
+    <textarea id="paragraph" name="paragraph" rows="10" cols="50" placeholder="Type your paragraph here..."></textarea>
+    <select id="voiceselect"></select>
+    <button id="btn" onclick="listen()">Listen</button>
+    <script>
+        const speech = new SpeechSynthesisUtterance();
+        let voices = [];
+        let voiceselect = document.querySelector("#voiceselect");
+        window.speechSynthesis.onvoiceschanged = () => {
+            voices = window.speechSynthesis.getVoices();
+            speech.voice = voices[0];
+            voiceselect.innerHTML = voices.map((voice, i) => `<option value="${i}">${voice.name}</option>`).join('');
+        };
+        voiceselect.addEventListener("change", () => {
+            speech.voice = voices[voiceselect.value];
+        });
+        function listen() {
+            speech.text = document.getElementById("paragraph").value;
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>

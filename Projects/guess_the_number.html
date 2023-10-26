@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess a number</title>
+
+</head>
+<body>
+    <p>try and guess a random number between 1 and 100 .</p>
+    <p>you have 10 attempts to guess the right number</p>
+    <h1>Guess a Number</h1>
+    <input id="inpt" type="number">
+    <button id="guess" onclick="ans()">Guess Submit</button>
+    <p>previous guess</p>
+    <p id="pg"></p>
+
+    <p>remaining attemps</p>
+    <p id ="countt"></p>
+
+    <script>
+        
+        const num = parseInt(Math.random()*100+1);
+        let count = 10;
+        function ans(){
+        {
+            let r = document.getElementById("inpt").value;
+            if(r==num){
+                document.getElementById("pg").innerText="you guess correct Number "+r;
+                count--;
+                document.getElementById("countt").innerHTML=count;
+                document.getElementById("guess").disabled=true;
+          
+            }
+            else if(r>num)
+            {
+                document.getElementById("pg").innerText="go for small number than "+r;
+                count--;
+                document.getElementById("countt").innerHTML=count;
+
+            }
+            else
+            {
+                document.getElementById("pg").innerText="go for larger number than "+r;
+                count--;
+                document.getElementById("countt").innerHTML=count;
+            }
+            if(count ==0)
+            {
+                document.getElementById("countt").innerHTML="Better Luck Next Time";
+                document.getElementById("guess").disabled=true;
+                document.getElementById("pg").innerText="Correct Number is : "+num;
+                
+
+            }
+            
+        }
+    }
+    </script>
+</body>
+</html>

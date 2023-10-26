@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Caller</title>
+</head>
+<body>
+    <h1 id="sel">Nij Padariya</h1>
+    <button id="btn" onclick="dnchnage()">click to stop magic</button>
+    <script>
+    
+        
+        function change() {
+            document.getElementById("sel").innerHTML="Nij Bharatkumar Padariya";
+            
+        }
+        const ss = setTimeout(change,3000)
+        function dnchnage() {
+            clearTimeout(ss)
+        }
+        
+        
+    </script>
+</body>
+</html>

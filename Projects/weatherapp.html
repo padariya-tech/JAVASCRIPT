@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather app</title>
+    Enter Name Of City  <input type="text" id="inp">
+    <button id="btn" onclick="weather()">Click to check Details</button>
+    <h1 id="cit"></h1>
+    <h1 id="hmd"></h1>
+    <h2 id="tmp"></h2>
+</head>
+<body>
+    <script>
+
+function weather()
+{
+        const city=document.getElementById('inp').value;
+        document.getElementById("cit").innerHTML="your entered City "+city
+         const apikey="1263ba731fd3ff515eee986f26751484";
+         const apiUrl="https://api.openweathermap.org/data/2.5/weather?units=metric";
+
+
+
+         fetch(apiUrl+`&appid=${apikey}`+`&q=${city}`).then((responce)=>{
+           
+    return responce.json()
+})
+.then((data)=>{
+    console.log(data);
+    document.getElementById("hmd").innerHTML="humidity is "+Math.round(data.main.humidity);
+    document.getElementById("tmp").innerHTML="temprature is "+Math.round(data.main.temp);
+})
+
+}
+
+//          async function weather(){
+//     try {
+//        const responce = await fetch(apiUrl+`&appid=${apikey}`+`&q=${city}`);
+//        const data=await responce.json();
+
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// weather()
+
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        #inp {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #cit, #hmd, #tmp {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Weather App</h1>
+        <p>Enter Name Of City</p>
+        <input type="text" id="inp">
+        <button id="btn" onclick="weather()">Click to check Details</button>
+        <h1 id="cit"></h1>
+        <h1 id="hmd"></h1>
+        <h2 id="tmp"></h2>
+    </div>
+    <script>
+        function weather() {
+            const city = document.getElementById('inp').value;
+            document.getElementById("cit").innerHTML = "Your entered City: " + city;
+            const apikey = "1263ba731fd3ff515eee986f26751484";
+            const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric";
+
+            fetch(apiUrl + `&appid=${apikey}` + `&q=${city}`)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    document.getElementById("hmd").innerHTML = "Humidity is " + Math.round(data.main.humidity);
+                    document.getElementById("tmp").innerHTML = "Temperature is " + Math.round(data.main.temp) + "°C";
+                });
+        }
+    </script>
+</body>
+</html>

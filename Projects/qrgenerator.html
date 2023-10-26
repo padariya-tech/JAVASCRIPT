@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+
+        #qrplace {
+            margin: 20px;
+        }
+
+        #qr {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        #btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #btn:hover {
+            background-color: #0056b3;
+        }
+
+        #ig {
+            display: none; /* Hide the image by default */
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <label for="qr">Enter your Text/URL:</label>
+    <input id="qr" type="text" placeholder="Enter link/name">
+    <div id="qrplace">
+        <img src="" id="ig" alt="QR Code">
+    </div>
+    <button id="btn" onclick="qrgen()">Generate QR Code</button>
+
+    <script>
+        function qrgen() {
+            let txt = document.getElementById("qr").value;
+            if (txt.length > 0) {
+                document.getElementById("ig").src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + txt;
+                document.getElementById("ig").style.display = "inline-block"; // Show the image
+            }
+        }
+    </script>
+</body>
+</html>

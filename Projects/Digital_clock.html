@@ -1,0 +1,74 @@
+<!-- implement digital clock  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Digital Clock</title>
+    <style>
+       body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #333;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.clock {
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+p {
+  margin: 0;
+}
+
+#hour,
+#min,
+#sec {
+  padding: 10px;
+  background-color: #333;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <p id="hour">00</p>
+        <p>:</p>
+        <p id="min">00</p>
+        <p>:</p>
+        <p id="sec">00</p>
+      </div>
+    <script>
+       function updateClock() {
+  const date = new Date();
+  const hour = padZero(date.getHours());
+  const min = padZero(date.getMinutes());
+  const sec = padZero(date.getSeconds());
+
+  document.getElementById("hour").innerHTML = hour;
+  document.getElementById("min").innerHTML = min;
+  document.getElementById("sec").innerHTML = sec;
+}
+
+function padZero(value) {
+  return value < 10 ? "0" + value : value;
+}
+
+// Initially update the clock
+updateClock();
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
+    </script>
+
+</body>
+</html>

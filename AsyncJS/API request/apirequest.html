@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitesh's Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        #btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #btn:hover {
+            background-color: #0056b3;
+        }
+        #container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        #nm2 {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Click to see details of Hitesh</h1>
+        <button id="btn" onclick="fetchUserData()">Click me</button>
+        <div>
+            <p>Followers of Hitesh are: <span id="followersCount"></span></p>
+            <img src="" alt="Image of Hitesh" id="profileImage">
+        </div>
+    </div>
+
+    <script>
+        function fetchUserData() {
+            const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', requestUrl);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const data = JSON.parse(this.responseText);
+                        document.getElementById("followersCount").textContent = data.followers;
+                        document.getElementById("profileImage").src = data.avatar_url;
+                    } else {
+                        alert('Failed to fetch data. Check the URL or try again later.');
+                    }
+                }
+            }
+            
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

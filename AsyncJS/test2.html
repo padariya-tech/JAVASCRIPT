@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Caller</title>
+</head>
+<body>
+    <h1 id="sel">Nij Padariya</h1>
+    <button id="strt" onclick="st1()">start</button>
+    <button id="stp" onclick="sp()">stop</button>
+    <p id="txt"></p>
+
+    <script>
+    
+        let i=0;
+        let ss=0;
+        function st()
+        {
+               
+                
+                i++;
+  const colors = ["red", "green", "blue", "yellow"]; // Define an array of colors.
+  const colorIndex = i % colors.length; // Get the index of the current color.
+  const currentColor = colors[colorIndex];
+        document.body.style.backgroundColor=currentColor;
+            }
+            function st1()
+        {
+               
+                  ss = setInterval(st,500)
+        
+            }
+       
+        function sp()
+        {
+            clearInterval(ss);    
+            document.body.style.backgroundColor=currentColor;
+           }
+    //   setInterval(function () {
+    //     alert("hello nij");
+    //   },2000)
+        
+        
+    </script>
+</body>
+</html>
