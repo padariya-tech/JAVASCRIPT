@@ -1,5 +1,5 @@
 // DEclare of Object
-
+// object literals
 const mySymb = Symbol("key1")
 
 
